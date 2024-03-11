@@ -35,8 +35,11 @@ class CourseItem extends Component {
       const data = await response.json();
       const formatData = data.map((each) => ({
         id: each.id,
-        logoUrl: each.image,
+        price: each.price,
         title: each.title,
+        description: each.description,
+        category: each.category,
+        image: each.image,
       }));
       this.setState({ courseList: formatData, ap: apStatus.success });
     } else {

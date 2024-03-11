@@ -36,9 +36,10 @@ class CourseItemDetails extends Component {
   getItem = async () => {
     this.setState({ ap: apStatus.loading });
 
-    const { match } = this.props;
-    const { params } = match;
-    const { id } = params;
+    // const { match } = this.props;
+    // const { params } = match;
+    // const { id } = params;
+    let id = this.props.match.params.id;
     const url = `https://fakestoreapi.com/products/${id}`;
     const options = {
       method: "Get",
@@ -47,10 +48,12 @@ class CourseItemDetails extends Component {
     if (res.ok === true) {
       const dat = await res.json();
       const updateCourse = {
-        id: dat.course_details.id,
-        name: dat.course_details.name,
-        imageUrl: dat.course_details.image_url,
-        description: dat.course_details.description,
+        id: dat.id,
+        price: dat.price,
+        title: dat.title,
+        description: dat.description,
+        category: dat.category,
+        image: dat.image,
       };
       this.setState({ course: updateCourse, ap: apStatus.success });
     } else {
@@ -65,8 +68,10 @@ class CourseItemDetails extends Component {
         <View>
           <Vi src={course.imageUrl} alt={course.name} />
           <div>
-            <Vh>{course.name}</Vh>
+            <Vh>{course.title}</Vh>
             <Vd>{course.description}</Vd>
+            <Vd>{course.price}</Vd>
+            <Vd>{course.category}</Vd>
           </div>
         </View>
       </div>
@@ -95,7 +100,7 @@ class CourseItemDetails extends Component {
       <Link to="/" className="link-el">
         <Nel>
           <Logo
-            src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
+            src="  https://img.freepik.com/free-vector/hand-drawn-shop-local-logo-design_23-2149575766.jpg?w=740&t=st=1710075841~exp=1710076441~hmac=fe8de484f7a8d86d5b19f7cc242183d386dc19123b3cdf96d1e82ee76d02abd3"
             alt="website logo"
           />
         </Nel>

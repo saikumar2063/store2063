@@ -6,11 +6,11 @@ import "./index.css";
 
 const Item = (props) => {
   const { details } = props;
-  const { id, title, logoUrl } = details;
+  const { id, title, image } = details;
   return (
     <Li>
       <Link to={`${id}`} className="link-el">
-        <Ci src={logoUrl} alt={title} />
+        <Ci src={image} alt={title} />
         <Cn>{title}</Cn>
       </Link>
     </Li>
